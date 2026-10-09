@@ -1,17 +1,17 @@
 @extends('layout.index')
 
-@section('title', 'Accounts | CRM')
+@section('title', 'Leads | CRM')
 
 @section('content')
 
     <div class="header">
         <div>
-            <h1>Accounts</h1>
-            <p>Account management</p>
+            <h1>Leads</h1>
+            <p>Lead management</p>
         </div>
 
-        <a href="{{ route('accounts.create') }}" class="btn-primary">
-            + Add Account
+        <a href="{{ route('leads.create') }}" class="btn-primary">
+            + Add Lead
         </a>
     </div>
 
@@ -22,10 +22,10 @@
         </div>
     @endif
 
-    {{-- Accounts Table --}}
+    {{-- Leads Table --}}
     <div class="card">
 
-        <h3>All Accounts</h3>
+        <h3>All Leads</h3>
 
         <div class="table-responsive">
             <table id="accountsTable" class="display" style="width:100%">
@@ -41,15 +41,15 @@
                 </thead>
 
                 <tbody>
-                    @forelse ($accounts as $account)
+                    @forelse ($leads as $lead)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $account->company_name }}</td>
-                            <td>{{ $account->email ?? '-' }}</td>
-                            <td>{{ $account->phone ?? '-' }}</td>
-                            <td>{{ ucfirst($account->status ?? 'N/A') }}</td>
+                            <td>{{ $lead->company_name }}</td>
+                            <td>{{ $lead->email ?? '-' }}</td>
+                            <td>{{ $lead->phone ?? '-' }}</td>
+                            <td>{{ ucfirst($lead->status ?? 'N/A') }}</td>
                             <td>
-                                {{ $account->created_at?->format('d M Y') ?? '-' }}
+                                {{ $lead->created_at?->format('d M Y') ?? '-' }}
                             </td>
                         </tr>
                     @empty

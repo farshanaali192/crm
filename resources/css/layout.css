@@ -1,0 +1,183 @@
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+            background: #f3f4f6;
+            color: #1f2937;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: #1f2937;
+            color: #fff;
+            padding: 25px 16px;
+        }
+
+        .sidebar h2 {
+            margin: 0 0 35px;
+            padding-left: 10px;
+            font-size: 23px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 13px 15px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #2563eb;
+            color: #fff;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 240px;
+            padding: 30px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .header h1 {
+            margin: 0 0 5px;
+            font-size: 26px;
+        }
+
+        .header p {
+            margin: 0;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* Dashboard Cards */
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            font-size: 23px;
+            margin-bottom: 18px;
+        }
+
+        .leads-icon {
+            background: #dbeafe;
+        }
+
+        .accounts-icon {
+            background: #dcfce7;
+        }
+
+        .contacts-icon {
+            background: #f3e8ff;
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+            font-size: 19px;
+        }
+
+        .card p {
+            margin: 0 0 22px;
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .card-link {
+            display: inline-block;
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+       .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .card-header h1 {
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .dashboard-cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 650px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .sidebar h2 {
+                margin-bottom: 15px;
+            }
+
+            .sidebar a {
+                display: inline-block;
+                margin: 0 3px 5px 0;
+                padding: 10px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+
+            .dashboard-cards {
+                grid-template-columns: 1fr;
+            }
+        }

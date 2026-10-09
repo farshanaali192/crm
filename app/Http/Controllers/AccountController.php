@@ -5,14 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Account\StoreAccountRequest;
 use App\Repositories\Account\AccountRepositoryInterface as AccountRepository;
 use App\Repositories\Contacts\ContactRepositoryInterface as ContactRepository;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
 
-    public function list()
+    public function list(AccountRepository $accountrepo,Request $request)
     {
-        $accounts=[];
+        $accounts=$accountrepo->list($request->all());
         return view('accounts.listAccounts', compact('accounts'));
     }
 

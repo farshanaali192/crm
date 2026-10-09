@@ -11,7 +11,8 @@ class AccountRepository implements AccountRepositoryInterface
 
     public function list($filter)
     {
-
+        $accounts= Account::get();
+        return $accounts;
     }
     public function save($data){
 

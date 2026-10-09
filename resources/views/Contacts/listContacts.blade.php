@@ -1,18 +1,15 @@
 @extends('layout.index')
 
-@section('title', 'Accounts | CRM')
+@section('title', 'Contacts | CRM')
 
 @section('content')
 
     <div class="header">
         <div>
-            <h1>Accounts</h1>
-            <p>Account management</p>
+            <h1>Contacts</h1>
+            <p>Contact management</p>
         </div>
 
-        <a href="{{ route('accounts.create') }}" class="btn-primary">
-            + Add Account
-        </a>
     </div>
 
     {{-- Success Message --}}
@@ -22,34 +19,40 @@
         </div>
     @endif
 
-    {{-- Accounts Table --}}
+    {{-- Contacts Table --}}
     <div class="card">
 
-        <h3>All Accounts</h3>
+        <h3>All Contacts</h3>
 
         <div class="table-responsive">
             <table id="accountsTable" class="display" style="width:100%">
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Company Name</th>
                         <th>Email</th>
                         <th>Phone</th>
+                        <th>Contactable Type</th>
                         <th>Status</th>
                         <th>Created At</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    @forelse ($accounts as $account)
+                    @forelse ($contacts as $contact)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $account->company_name }}</td>
-                            <td>{{ $account->email ?? '-' }}</td>
-                            <td>{{ $account->phone ?? '-' }}</td>
-                            <td>{{ ucfirst($account->status ?? 'N/A') }}</td>
+                            <td>{{ $contact->first_name }}</td>
+                            <td>{{ $contact->last_name }}</td>
+                            <td>{{ $contact->company_name }}</td>
+                            <td>{{ $contact->email ?? '-' }}</td>
+                            <td>{{ $contact->phone ?? '-' }}</td>
+                            <td>{{ ucfirst($contact->contactable_type ?? 'N/A') }}</td>
+                            <td>{{ ucfirst($contact->status ?? 'N/A') }}</td>
                             <td>
-                                {{ $account->created_at?->format('d M Y') ?? '-' }}
+                                {{ $contact->created_at?->format('d M Y') ?? '-' }}
                             </td>
                         </tr>
                     @empty

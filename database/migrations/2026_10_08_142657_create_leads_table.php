@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('company_name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
-            $table->enum('status',['new','qualified','unqualified'])->default('new');
+            $table->enum('status',['new','qualified','unqualified','converted','contacted'])->default('new');
             $table->timestamps();
             $table->softDeletes();
         });
