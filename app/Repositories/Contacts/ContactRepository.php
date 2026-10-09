@@ -14,17 +14,9 @@ class ContactRepository implements ContactRepositoryInterface
         return $contacts= Contact::get();
     }
 
-    public function save($contactableData,$inputData,$type='')
+    public function save($data)
     {
-        $data=[
-            'first_name'=>$inputData->first_name,
-            'last_name'=>$inputData->last_name,
-            'email'=>$contactableData->email,
-            'phone'=>$contactableData->phone,
-            'contactable_type'=>$type,
-            'contactable_id'=>$contactableData->id,
-            'status'=>'active'
-        ];
+
         if ($contact = Contact::create($data)) {
             return $contact;
         }

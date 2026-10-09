@@ -22,6 +22,13 @@ return new class extends Migration
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->unique(['email', 'contactable_type']);
+
+            $table->index(['contactable_type', 'contactable_id']);
+            $table->index('status');
+            $table->index('created_at');
+
         });
     }
 

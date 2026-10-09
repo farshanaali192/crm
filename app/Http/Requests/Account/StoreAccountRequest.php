@@ -4,6 +4,7 @@ namespace App\Http\Requests\Account;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreAccountRequest extends FormRequest
 {
@@ -26,8 +27,24 @@ class StoreAccountRequest extends FormRequest
             'company_name'=>'required|string|max:50|min:1',
             'first_name' => 'required|string|max:50|min:1',
             'last_name' => 'nullable|string|max:100|min:1',
-            'email' => 'required|email|unique:accounts,email,NULL,id,deleted_at,NULL',
             'phone' => 'required|unique:accounts,phone,NULL,id,deleted_at,NULL|min:5|max:15',
+            // 'email' => 'required|email|unique:accounts,email,NULL,id,deleted_at,NULL',
+            // 'email' => ['required', 'email',
+            //     Rule::unique('contacts', 'email')->where('contactable_type', 'account'),
+            // ],
+            'email' => [
+                'required',
+                'email',
+
+                // Unique in accounts
+                Rule::unique('accounts', 'email')
+                    ->whereNull('deleted_at'),
+
+                // Unique in contacts for account-type contacts,
+                Rule::unique('contacts', 'email')
+                    ->where('contactable_type', 'account')
+                    ->whereNull('deleted_at'),
+            ]
         ];
     }
 
