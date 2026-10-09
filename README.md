@@ -111,8 +111,18 @@ Open the local URL printed by Artisan, commonly http://127.0.0.1:8000.
 # Verification and testing
 
     Run the automated test suite with:
-
     php artisan test
+
+    For individual testing of the functions:
+    Account creation:
+    php artisan test --filter=AccountCreationTest
+
+    Lead Creation:
+    php artisan test --filter=LeadCreationTest
+
+
+    here used testing datatabse (crm_test) other than main database.Refer phpunit.xml.
+    Both files contains positive testing, negative testing , Validation Testing , feature testing and Integration Testing.
 
 
     Useful commands
